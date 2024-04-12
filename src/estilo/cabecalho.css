@@ -1,0 +1,413 @@
+.cabecalho {
+  width: 100%;
+  height: 100px;
+  line-height: 100px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 999;
+  background-color: transparent; /* Define o fundo como transparente por padrão */
+  transition: background-color 0.3s ease; /* Adiciona uma transição suave */
+}
+
+.cabecalho-opaco {
+  background-color: #fff; /* Muda o fundo para branco quando o usuário rola para baixo */
+  height: 120px;
+}
+
+.nav__wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.logo__img {
+  width: auto;
+  margin-left: -190px;
+}
+
+.logo__img img {
+  height: 90px;
+  width: auto;
+  line-height: 20px;
+  display: flex;
+  align-items: center;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  column-gap: -1.5rem;
+}
+
+.logo h2 {
+  color: rgba(33, 33, 33, 0.778);
+  font-size: larger;
+}
+
+.menu {
+  display: flex;
+  margin-right: -15vh;
+  column-gap: 3rem;
+  font-size: 20px;
+  margin-top: 10px;
+}
+
+.nav__item a {
+  color: var(--heading-color);
+  font-weight: 600 !important;
+  cursor: pointer;
+}
+
+.nav__item a:hover {
+  background-image: linear-gradient(to right, #49ab8e, #7675a9, #7ac481);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.nav__right {
+  display: flex;
+  align-items: center;
+  column-gap: -1.5rem;
+}
+
+
+/* Estilos do botão de menu */
+.menu-toggle {
+  display: none;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 10px;
+  position: fixed;
+  top: 6; /* Ajusta a posição do botão de menu */
+  right: -90px; /* Ajusta a posição do botão de menu */
+  z-index: 1000;
+}
+
+.menu-toggle:focus {
+  outline: none; /* Remove a borda de foco ao clicar no botão */
+}
+
+.menu-icon {
+  display: block;
+  width: 70px; /* Ajuste o tamanho do ícone conforme necessário */
+  height: 3px;
+  background-color: #121111;
+  position: relative;
+  transition: transform 0.3s ease; /* Adiciona uma transição suave */
+}
+
+.menu-icon:before,
+.menu-icon:after {
+  content: "";
+  position: absolute;
+  width: 70px;
+  height: 3px;
+  background-color: #121111;
+  transition: transform 0.3s ease; /* Adiciona uma transição suave */
+}
+
+.menu-icon:before {
+  top: -10px;
+  left: 0.5px;
+}
+
+.menu-icon:after {
+  bottom: -10px;
+  left: 0.5px;
+}
+
+/* Animação do botão de menu quando aberto */
+.menu-toggle.open .menu-icon {
+  transform: rotate(45deg);
+}
+
+.menu-toggle.open .menu-icon:before {
+  transform: translateY(8px) rotate(-90deg);
+}
+
+.menu-toggle.open .menu-icon:after {
+  transform: translateY(-8px) rotate(90deg);
+}
+
+/* Estilos adicionais para o botão de menu quando aberto */
+.menu-toggle.open {
+  background-color: rgba(0, 0, 0, 0.1); /* Adiciona um fundo semitransparente quando aberto */
+  border-radius: 50%; /* Torna o botão de menu um círculo */
+  padding: 30px; /* Aumenta o espaçamento interno quando aberto */
+  transition: background-color 0.3s ease; /* Adiciona uma transição suave */
+}
+
+.menu-toggle.open .menu-icon {
+  background-color: #050505; /* Muda a cor do ícone quando aberto */
+}
+
+.menu-toggle.open .menu-icon:before,
+.menu-toggle.open .menu-icon:after {
+  background-color: #000000; /* Muda a cor dos elementos do ícone quando aberto */
+}
+
+
+
+.navigation {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+.navigation.open {
+  flex-direction: column;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 100%;
+  background-color: #1d1c1c35;
+  z-index: 1000;
+  display: none;
+}
+
+.navigation.open .menu {
+  display: flex;
+  flex-direction: column;
+}
+
+/* Adicione regras de mídia para telas pequenas (por exemplo, smartphones em modo paisagem ou tablets em modo retrato) */
+@media only screen and (min-width: 20px) and (max-width: 570px) {
+  .cabecalho {
+    height: auto;
+    line-height: normal;
+  }
+
+  .menu li {
+    margin-bottom: 0.5em; /* espaço entre os menus */
+  }
+
+  .logo__img img {
+    height: 10em;
+    width: auto;
+    line-height: normal;
+    margin-left: 11em;
+  }
+
+  .logo h2 {
+    font-size: 40px;
+  }
+
+  .menu-toggle {
+    display: block;
+    margin-right: 6em;
+    padding: 2em;
+  }
+
+  .menu {
+    display: none;
+    font-size: 4em;
+    text-align: center;
+  }
+
+  .navigation.open {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    background-color: #e3fae5;
+    z-index: 1000;
+  }
+}
+
+/* Adicione regras de mídia para telas pequenas (por exemplo, smartphones em modo paisagem ou tablets em modo retrato) */
+@media only screen and (max-width: 1220px) {
+  .menu-toggle {
+    display: block;
+    margin-right: 6em;
+    padding: 2em;
+  }
+
+  .navigation {
+    position: relative;
+  }
+
+  .menu {
+    display: none;
+    font-size: 4em;
+    justify-content: center; /* Centraliza horizontalmente */
+  align-items: center; /* Centraliza verticalmente */
+  }
+
+  .navigation.open {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    background-color: #e3fae5;
+    z-index: 1000;
+  }
+
+  .nav__item {
+    margin-bottom: 20px; /* Espaçamento entre os itens do menu */
+  }
+
+  .nav__item a {
+    color: var(--heading-color);
+    font-weight: 600 !important;
+    cursor: pointer;
+    transition: color 0.3s ease; /* Adiciona uma transição suave para a cor do texto */
+  }
+
+  .nav__item a:hover {
+    color: #49ab8e; /* Altera a cor do texto ao passar o mouse */
+  }
+}
+
+@media only screen and (min-width: 571px) and (max-width: 576px)  {
+  .cabecalho {
+    height: auto;
+    line-height: normal;
+  }
+
+  .menu li {
+    margin-bottom: 0.5em; /* espaço entre os menus */
+  }
+
+  .logo__img img {
+    height: 10em;
+    width: auto;
+    line-height: normal;
+    margin-left: 11em;
+  }
+
+  .logo h2 {
+    font-size: 40px;
+  }
+
+  .menu-toggle {
+    display: block;
+    margin-right: 6em;
+    padding: 2em;
+  }
+
+  .navigation {
+    position: relative;
+  }
+
+  .menu {
+    display: none;
+    font-size: 4em;
+    justify-content: center; /* Centraliza horizontalmente */
+  align-items: center; /* Centraliza verticalmente */
+  }
+
+  .navigation.open {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    background-color: #e3fae5;
+    z-index: 1000;
+  }
+}
+
+
+@media only screen and (min-width: 780px) and (max-width: 1200px)  {
+  .cabecalho {
+    height: auto;
+    line-height: normal;
+  }
+
+  .menu li {
+    margin-bottom: 0.5em; /* espaço entre os menus */
+  }
+
+  .logo__img img {
+    height: 10em;
+    width: auto;
+    line-height: normal;
+    margin-left: -4em;
+  }
+
+  .logo h2 {
+    font-size: 40px;
+  }
+
+  .menu-toggle {
+    display: block;
+    margin-right: 6em;
+    padding: 2em;
+  }
+
+  .navigation {
+    position: relative;
+  }
+
+  .menu {
+    display: none;
+    font-size: 4em;
+    justify-content: center; /* Centraliza horizontalmente */
+  align-items: center; /* Centraliza verticalmente */
+
+  }
+
+  .navigation.open {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    background-color: #e3fae5;
+    z-index: 1000;
+  }
+}
+
+@media only screen and (min-width: 576px) and (max-width: 780px)  {
+  .cabecalho {
+    height: auto;
+    line-height: normal;
+  }
+  .logo__img img {
+    height: 7em;
+    width: auto;
+    line-height: normal;
+    margin-left: -7em;
+  }
+
+  .logo h2 {
+    font-size: 40px;
+  }
+
+  .menu-toggle {
+    display: block;
+    margin-right: 6em;
+    padding: 2em;
+  }
+
+
+  .navigation {
+    position: relative;
+  }
+
+  .menu {
+    display: none;
+    font-size: 4em;
+    justify-content: center; /* Centraliza horizontalmente */
+  align-items: center; /* Centraliza verticalmente */
+  }
+
+  .navigation.open {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    background-color: #e3fae5;
+    z-index: 1000;
+  }
+}
